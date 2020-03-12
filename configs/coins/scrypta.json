@@ -26,7 +26,7 @@
     "binary_url": "https://github.com/scryptachain/scrypta/releases/download/v1.1.0/lyra-1.1.0-x86_64-linux-gnu.tar.gz",
     "verification_type": "sha256",
     "verification_source": "a25c498001fdf9d292bffb2f5d477f58035eb464799c206c1db3da488658bd98",
-    "extract_command": "tar -xvzf -C backend",
+    "extract_command": "tar -C backend --strip 1 -xf",
     "exclude_files": [
       "lyra-qt",
       "lyra-tx"
