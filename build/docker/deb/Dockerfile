@@ -27,8 +27,8 @@ RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 RUN tar -xzvf db-4.8.30.NC.tar.gz
 RUN cd db-4.8.30.NC/build_unix
 RUN db-4.8.30.NC/dist/configure --enable-cxx
-RUN db-4.8.30.NC/make -j2
-RUN db-4.8.30.NC/make install
+RUN db-4.8.30.NC/build_unix/make -j2
+RUN db-4.8.30.NC/build_unix/make install
 RUN export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.4.8/include"
 RUN export BDB_LIB_PATH="/usr/local/BerkeleyDB.4.8/lib"
 RUN ln -s /usr/local/BerkeleyDB.4.8/lib/libdb-4.8.so /usr/lib/libdb-4.8.so
