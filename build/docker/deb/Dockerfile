@@ -23,16 +23,6 @@ RUN apt-get -y install build-essential autoconf automake libtool libboost-all-de
 RUN apt-get -y install libleveldb-dev libgmp-dev libgmp3-dev libcurl4-openssl-dev libcrypto++-dev libqrencode-dev
 RUN apt-get -y install libgmp-dev libssl-dev libcurl4-openssl-dev
 
-RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
-RUN tar -xzvf db-4.8.30.NC.tar.gz
-RUN cd db-4.8.30.NC/build_unix
-RUN db-4.8.30.NC/dist/configure --enable-cxx
-RUN cd db-4.8.30.NC && make -j2
-RUN cd db-4.8.30.NC && make install
-RUN export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.4.8/include"
-RUN export BDB_LIB_PATH="/usr/local/BerkeleyDB.4.8/lib"
-RUN ln -s /usr/local/BerkeleyDB.4.8/lib/libdb-4.8.so /usr/lib/libdb-4.8.so
-RUN ln -s /usr/local/BerkeleyDB.4.8/lib/libdb_cxx-4.8.so /usr/lib/libdb_cxx-4.8.so
 
 ADD build-deb.sh /build/build-deb.sh
 
