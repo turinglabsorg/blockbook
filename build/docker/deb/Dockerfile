@@ -22,7 +22,7 @@ RUN add-apt-repository -y ppa:bitcoin/bitcoin
 RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 RUN tar -xzvf db-4.8.30.NC.tar.gz
 RUN cd db-4.8.30.NC/build_unix
-RUN ../dist/configure --enable-cxx
+RUN db-4.8.30.NC/dist/configure --enable-cxx
 RUN make -j2
 RUN make install
 RUN export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.4.8/include"
