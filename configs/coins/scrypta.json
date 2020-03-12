@@ -1,0 +1,68 @@
+{
+  "coin": {
+    "name": "Scrypta",
+    "shortcut": "LYRA",
+    "label": "Scrypta",
+    "alias": "lyra"
+  },
+  "ports": {
+    "backend_rpc": 42223,
+    "backend_message_queue": 38349,
+    "blockbook_internal": 9049,
+    "blockbook_public": 9149
+  },
+  "ipc": {
+    "rpc_url_template": "http://127.0.0.1:{{.Ports.BackendRPC}}",
+    "rpc_user": "lyrarpc",
+    "rpc_pass": "lyrapass",
+    "rpc_timeout": 25,
+    "message_queue_binding_template": "tcp://127.0.0.1:{{.Ports.BackendMessageQueue}}"
+  },
+  "backend": {
+    "package_name": "backend-lyra",
+    "package_revision": "satoshilabs-1",
+    "system_user": "lyra",
+    "version": "1.1.0",
+    "binary_url": "https://github.com/scryptachain/scrypta/releases/download/v1.1.0/lyra-1.1.0-x86_64-linux-gnu.tar.gz",
+    "verification_type": "sha256",
+    "verification_source": "a25c498001fdf9d292bffb2f5d477f58035eb464799c206c1db3da488658bd98",
+    "extract_command": "tar -xvzf",
+    "exclude_files": [
+      "lyra-qt",
+      "lyra-tx"
+    ],
+    "exec_command_template": "{{.Env.BackendInstallPath}}/{{.Coin.Alias}}/lyrad -datadir={{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend -conf={{.Env.BackendInstallPath}}/{{.Coin.Alias}}/{{.Coin.Alias}}.conf -pid=/run/{{.Coin.Alias}}/{{.Coin.Alias}}.pid",
+    "logrotate_files_template": "{{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend/*.log",
+    "postinst_script_template": "",
+    "service_type": "forking",
+    "service_additional_params_template": "",
+    "protect_memory": false,
+    "mainnet": true,
+    "server_config_file": "bitcoin_like.conf",
+    "client_config_file": "bitcoin_like_client.conf",
+    "additional_params": {
+      "whitelist": "127.0.0.1"
+    }
+  },
+  "blockbook": {
+    "package_name": "blockbook-lyra",
+    "system_user": "blockbook-lyra",
+    "internal_binding_template": ":{{.Ports.BlockbookInternal}}",
+    "public_binding_template": ":{{.Ports.BlockbookPublic}}",
+    "explorer_url": "",
+    "additional_params": "",
+    "block_chain": {
+      "parse": true,
+      "mempool_workers": 8,
+      "mempool_sub_workers": 2,
+      "block_addresses_to_keep": 300,
+      "xpub_magic": 755118387,
+      "slip44": 497,
+      "additional_params": {}
+    }
+  },
+  "meta": {
+    "package_maintainer": "Sebastiano Cataudo",
+    "package_maintainer_email": "sebastiano.c@scrypta.foundation"
+  }
+}
