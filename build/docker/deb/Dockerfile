@@ -21,10 +21,7 @@ RUN add-apt-repository -y ppa:bitcoin/bitcoin
 
 RUN apt-get -y install build-essential autoconf automake libtool libboost-all-dev libboost-program-options-dev libssl1.0-dev
 RUN apt-get -y install libleveldb-dev libgmp-dev libgmp3-dev libcurl4-openssl-dev libcrypto++-dev libqrencode-dev
-RUN apt-get -y libminiupnpc-dev autogen libtool libevent-dev libprotobuf-dev protobuf-compiler
-RUN apt-get -y install curl g++ git git-core faketime bsdmainutils mingw-w64 g++-mingw-w64 nsis zip ca-certificates python
 RUN apt-get -y install libgmp-dev libssl-dev libcurl4-openssl-dev
-RUN apt-get -y install qtbase5-dev libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libzmq3-dev
 
 RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 RUN tar -xzvf db-4.8.30.NC.tar.gz
